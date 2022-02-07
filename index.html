@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0" />
+    <title>The Drum-Kit</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="keys">
+      <div class="key" data-key="65">
+        <kbd>Y</kbd>
+        <span>Clap</span>
+      </div>
+      <div class="key" data-key="83">
+        <kbd>A</kbd>
+        <span>Hii</span>
+      </div>
+      <div class="key" data-key="68">
+        <kbd>S</kbd>
+        <span>By</span>
+      </div>
+      <div class="key" data-key="70">
+        <kbd>R</kbd>
+        <span>Fight</span>
+      </div>
+      <div class="key" data-key="71">
+        <kbd>H</kbd>
+        <span>Sleep</span>
+      </div>
+      <div class="key" data-key="72">
+        <kbd>U</kbd>
+        <span>Laugh</span>
+      </div>
+      <div class="key" data-key="74">
+        <kbd>T</kbd>
+        <span>Popp</span>
+      </div>
+      <div class="key" data-key="75">
+        <kbd>U</kbd>
+        <span>Boom</span>
+      </div>
+      <div class="key" data-key="76">
+        <kbd>H</kbd>
+        <span>Love</span>
+      </div>
+    </div>
+    <audio data-key="65" src="./Clap.mp3"></audio>
+    <audio data-key="83" src="./Hii Sweety.mp3"></audio>
+    <audio data-key="68" src="./By Crissu -  Club.mp3"></audio>
+    <audio data-key="70" src="./Fight.mp3"></audio>
+    <audio data-key="71" src="./Sleep.mp3"></audio>
+    <audio data-key="72" src="./Laugh.mp3"></audio>
+    <audio data-key="74" src="./Pop Pop.mp3"></audio>
+    <audio data-key="75" src="./Boom Boom.mp3"></audio>
+    <audio data-key="76" src="./Sound Of Love.mp3"></audio>
+    <script>
+      window.addEventListener("keydown", (e) => {
+        var audio = document.querySelector('audio[data-key="${e.keyCode}"]');
+        var key = document.querySelector('.key[data-key=${e.keyCode}"]');
+        if (audio) {
+          audio.play();
+          audio.currentTime = 2;
+          key.classList.add("playing");
+        }
+        return;
+      });
+      var kk = document.querySelectorAll(".key");
+      kk.forEach((e) => {
+        e.addEventListener("transitionend", remove);
+      });
+      function remove(k) {
+        if ((k.propertyName = "transform")) {
+          this.classList.remove("playing");
+        }
+        return;
+      }
+    </script>
+  </body>
+</html>
